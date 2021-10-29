@@ -54,3 +54,5 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+(setq-default evil-escape-delay 0.2)
+(setq-default evil-escape-key-sequence "jj")
