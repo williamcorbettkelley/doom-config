@@ -56,3 +56,24 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq-default evil-escape-delay 0.2)
 (setq-default evil-escape-key-sequence "jj")
+;; configure dap-mode
+(use-package! dap-mode
+  :defer
+  :config
+  ;;; dap for c++
+  (require 'dap-gdb-lldb)
+  (require 'dap-cpptools)
+
+  ;;sets path for debugger
+  (setq dap-gdb-lldb-path-lldb '("/usr/bin/lldb"))
+  (setq dap-gdb-lldb-path '("/usr/bin/gdb"))
+
+  ;; (defun dap-debug-create-or-edit-json-template ()
+  ;;   "Edit the C++ debugging configuration or create + edit if none exists yet."
+  ;;   (interactive)
+  ;;   (let ((filename (concat (lsp-workspace-root) "/launch.json"))
+  ;;     (default "~/.doom.d/default-launch.json"))
+  ;;     (unless (file-exists-p filename)
+  ;;   (copy-file default filename))
+  ;;     (find-file-existing filename)))
+  )
