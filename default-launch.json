@@ -1,10 +1,10 @@
 {
     "configurations": [
     {
-        "type": "lldb-vscode",
+        "type": "lldb",
         "request": "launch",
         "name": "C++ LLDB json default",
-        "program": "${workspaceFolder}/debug/${fileBasenameNoExtension}",
+        "program": "${workspaceFolder}/*_debug",
         "cwd": "${workspaceFolder}",
         "args": [],
     }

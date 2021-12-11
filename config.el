@@ -21,12 +21,12 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
 ;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-(setq doom-font (font-spec :family "FiraCode" :size 15)
+(setq doom-font (font-spec :family "Hack" :size 15)
       doom-variable-pitch-font (font-spec :family "Alegreya" :size 15))
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-rouge)
+(setq doom-theme 'doom-monokai-pro)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -59,21 +59,23 @@
 ;; configure dap-mode
 (use-package! dap-mode
   :defer
+  ;; (dap-auto-configure-features
+  ;;  '(sessions locals breakpoints expressions tooltip)  "Remove the button panel in the top.")
   :config
   ;;; dap for c++
   (require 'dap-gdb-lldb)
   (require 'dap-cpptools)
 
   ;;sets path for debugger
-  (setq dap-gdb-lldb-path-lldb '("/usr/bin/lldb"))
-  (setq dap-gdb-lldb-path '("/usr/bin/gdb"))
+  (setq dap-gdb-lldb-path-lldb "/usr/bin/lldb-vscode")
+  (setq dap-gdb-lldb-path "/usr/bin/gdb")
 
-  ;; (defun dap-debug-create-or-edit-json-template ()
-  ;;   "Edit the C++ debugging configuration or create + edit if none exists yet."
-  ;;   (interactive)
-  ;;   (let ((filename (concat (lsp-workspace-root) "/launch.json"))
-  ;;     (default "~/.doom.d/default-launch.json"))
-  ;;     (unless (file-exists-p filename)
-  ;;   (copy-file default filename))
-  ;;     (find-file-existing filename)))
+  (defun dap-debug-create-or-edit-json-template ()
+    "Edit the C++ debugging configuration or create + edit if none exists yet."
+    (interactive)
+    (let ((filename (concat (lsp-workspace-root) "/launch.json"))
+      (default "~/.doom.d/default-launch.json"))
+      (unless (file-exists-p filename)
+    (copy-file default filename))
+      (find-file-existing filename)))
   )
